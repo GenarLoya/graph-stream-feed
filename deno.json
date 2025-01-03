@@ -1,0 +1,16 @@
+{
+  "workspace": ["./server", "./frontend"],
+  "tasks": {
+    "spino": "deno --allow-read --allow-run='deno' jsr:@rsm-hcd/spino",
+    "dev": "deno task spino dev"
+  },
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "jsxImportSourceTypes": "@types/react"
+  },
+  "imports": {
+    "@rsm-hcd/spino": "jsr:@rsm-hcd/spino@^0.4.0"
+  }
+}
