@@ -1,0 +1,4 @@
+{
+  "name": "@graphs/types",
+  "exports": "./mod.ts"
+}
