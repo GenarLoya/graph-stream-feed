@@ -5,8 +5,17 @@
     "preview": "deno run -A --node-modules-dir npm:vite preview",
     "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
   },
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "jsxImportSourceTypes": "@types/react",
+    "paths": {
+      "@graphs/types": ["../types/mod.ts"]
+    }
+  },
   "imports": {
-    "@deno/vite-plugin": "npm:@deno/vite-plugin@1.0.0",
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@2.0.2",
     "@tanstack/react-query": "npm:@tanstack/react-query@5.62.15",
     "@tanstack/react-query-devtools": "npm:@tanstack/react-query-devtools@5.62.15",
     "@types/react": "npm:@types/react@18.3.11",
@@ -14,6 +23,7 @@
     "@vitejs/plugin-react": "npm:@vitejs/plugin-react@4.3.3",
     "react": "npm:react@18.3.1",
     "react-dom": "npm:react-dom@18.3.1",
+    "recharts": "npm:recharts@2.15.0",
     "vite": "npm:vite@5.4.9"
   }
 }

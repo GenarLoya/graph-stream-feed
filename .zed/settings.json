@@ -1,0 +1,28 @@
+{
+  "languages": {
+    "JavaScript": {
+      "language_servers": [
+        "deno",
+        "!vtsls",
+        "!typescript-language-server",
+        "...",
+      ],
+    },
+    "TypeScript": {
+      "language_servers": [
+        "deno",
+        "!vtsls",
+        "!typescript-language-server",
+        "...",
+      ],
+    },
+    "TSX": {
+      "language_servers": [
+        "deno",
+        "!vtsls",
+        "!typescript-language-server",
+        "...",
+      ],
+    },
+  },
+}

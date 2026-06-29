@@ -3,7 +3,7 @@
     "hono": "jsr:@hono/hono@^4.6.15"
   },
   "tasks": {
-    "dev": "deno run --watch --allow-net --allow-sys --allow-read main.ts",
-    "start": "deno run --allow-net main.ts"
+    "dev": "deno run --watch --allow-net --allow-sys --allow-run=ps,top,free main.ts",
+    "start": "deno run --allow-net --allow-sys --allow-run=ps,top,free main.ts"
   }
 }
