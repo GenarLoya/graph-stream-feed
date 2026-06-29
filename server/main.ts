@@ -11,19 +11,24 @@ const app = new Hono();
 
 app.use(logger());
 
+app.all("/", (c) => {
+  // Redirect to static
+  return c.redirect("/static/");
+});
+
 app.use(
   "/static/*",
   serveStatic({
     root: "../frontend/dist",
     rewriteRequestPath: (path) => path.replace(/^\/static/, ""),
-  })
+  }),
 );
 
 app.use(
   "/assets/*",
   serveStatic({
     root: "../frontend/dist",
-  })
+  }),
 );
 
 app.use(cors());
@@ -60,11 +65,12 @@ const readMemoryPercent = async (): Promise<number> => {
 };
 
 const getCurrentCounting = async (type: Types): Promise<Metric> => {
-  const counter = type === "cpu"
-    ? await readCpuPercent()
-    : type === "memory"
-    ? await readMemoryPercent()
-    : Math.floor(Math.random() * 100);
+  const counter =
+    type === "cpu"
+      ? await readCpuPercent()
+      : type === "memory"
+        ? await readMemoryPercent()
+        : Math.floor(Math.random() * 100);
   return { date: Date.now(), type, counter };
 };
 
@@ -98,12 +104,7 @@ const TOP_N = 10;
 
 const listTopProcesses = async (): Promise<Process[]> => {
   const { code, stdout } = await new Deno.Command("ps", {
-    args: [
-      "-eo",
-      "pid=,pcpu=,pmem=,comm=",
-      "--sort=-pcpu",
-      "--no-headers",
-    ],
+    args: ["-eo", "pid=,pcpu=,pmem=,comm=", "--sort=-pcpu", "--no-headers"],
   }).output();
 
   if (code !== 0) return [];
