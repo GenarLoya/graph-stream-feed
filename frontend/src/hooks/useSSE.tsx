@@ -28,7 +28,10 @@ export function useSSE<T>({
   });
 
   useEffect(() => {
-    const eventSource = new EventSource(url);
+    const resolved = url.startsWith("/")
+      ? new URL(url, window.location.origin).toString()
+      : url;
+    const eventSource = new EventSource(resolved);
 
     eventSource.addEventListener(eventSSE, (event) => {
       const newData = JSON.parse(event.data) as T;

@@ -14,4 +14,19 @@ export default defineConfig({
       "@graphs/types": typesEntry,
     },
   },
+  server: {
+    port: 5173,
+    proxy: {
+      "/online": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+        ws: true,
+      },
+      "/processes": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+        ws: true,
+      },
+    },
+  },
 });

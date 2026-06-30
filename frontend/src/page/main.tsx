@@ -13,21 +13,21 @@ const StatusDot = ({ ok }: { ok: boolean }) => (
 
 export default function Main() {
   const cpu = useSSE<Metric>({
-    url: "http://localhost:8000/online/cpu",
+    url: "/online/cpu",
     eventSSE: "send-metric",
     queryKey: ["metric", "cpu"],
     maxHistory: 60,
   });
 
   const mem = useSSE<Metric>({
-    url: "http://localhost:8000/online/memory",
+    url: "/online/memory",
     eventSSE: "send-metric",
     queryKey: ["metric", "memory"],
     maxHistory: 60,
   });
 
   const processes = useSSE<ProcessSnapshot>({
-    url: "http://localhost:8000/processes",
+    url: "/processes",
     eventSSE: "send-processes",
     queryKey: ["processes"],
     mode: "replace",
